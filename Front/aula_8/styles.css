@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom right, #7400b8, #80ffdb);
+}
+
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #7400b8;
+    padding: 20px 0;
+    color: white;
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.espaço {
+    padding-top: 140px;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.produto {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.produto-cardapio {
+    background-color: ;
+    border: 1px solid #7400b8;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(204, 88, 3, 0.1);
+}
+
+.produto-cardapio img {
+    width: 100%;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.produto-cardapio:hover {
+    transform: scale(1.03);
+}
+
+.produto-cardapio:hover img {
+    transform: scale(1.05);
+}
+
+.produto-cardapio h2 {
+    margin-top: 15px;
+    color: black;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.subtitulo {
+    margin-top: 100px;
+    margin-bottom: -100px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+    padding: 20px;
+    border: 2px solid #6930c3;
+    border-radius: 16px;
+    background-color: #fff6ec;
+    box-shadow: 0 2px 8px rgba(204, 88, 3, 0.15);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
