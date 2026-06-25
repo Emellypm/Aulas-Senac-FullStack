@@ -8,7 +8,15 @@ interface cadUsuarios {
 }
 
 class UsuariosServices {
-    async cadastrarUsuarios({ nome, email, senha, telefone }: cadUsuarios) {
+    async cadastrarUsuarios({ nome, email, senha, telefone }: cadUsuarios){
+        const emailExiste = await prismaClient.usuarios.findFirst({
+            where: {
+                email: email
+            }
+        })
+            if(emailExiste) {
+                throw new Error("E-mail já Cadastrado")
+            }
 
         await prismaClient.usuarios.create({
             data: {
