@@ -7,22 +7,22 @@
 generator client {
   provider = "prisma-client-js"
 }
- 
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
- 
-model usuarios {
-  id String @id @default(uuid())
-  nome String
-  email String
-  senha String
+
+model Usuarios {
+  id       String  @id @default(uuid())
+  nome     String
+  email    String
+  senha    String
   telefone String
-  status Boolean @default(true)
- 
-  data_criacao  DateTime @default(now())
+  status   Boolean @default(true)
+
+  data_criacao     DateTime @default(now())
   data_atualizacao DateTime @updatedAt
- 
+
   @@map("usuarios")
 }
