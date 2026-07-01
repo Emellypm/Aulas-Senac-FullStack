@@ -46,7 +46,7 @@ model Setor{
 model Empresa{
   id String @id @default(uuid())
   nome String
-  CNPJ String @unique
+  cnpj String @unique
   segmento String
   status Boolean @default(true)
 

@@ -16,4 +16,4 @@ class EmpresaC{
     }
 }
 
-export {EmpresaS}
+export {EmpresaC}
