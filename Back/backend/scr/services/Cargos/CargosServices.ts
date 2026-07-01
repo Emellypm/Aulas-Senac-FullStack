@@ -1,18 +1,8 @@
-import prismaClient from "../../prisma/PrismaClient";
-
-interface cadastrarCargos {
-    nome: string
-}
+import prismaClient from '../../prisma/PrismaClient'
 
 class CargosServices {
-    async cadastrarCargos({ nome }: cadastrarCargos){
-        await prismaClient.cargos.create({
-            data: {
-                nome: nome
-            }
-        })
-        
-
+    async cadastrarCargos(nome: string){
+        console.log(nome)
     }
 }
 

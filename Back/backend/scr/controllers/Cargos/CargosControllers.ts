@@ -1,5 +1,6 @@
-import { Request, Response } from "express"
-import { CargosServices } from "../../services/Cargos/CargosServices"
+import { Request, Response } from 'express'
+
+import { CargosServices } from '../../Services/Cargos/CargosServices'
 
 class CargosControllers {
     async cadastrarCargos(req: Request, res: Response) {
@@ -9,4 +10,5 @@ class CargosControllers {
         return res.json(resposta)
     }
 }
-export  {CargosControllers}
+
+export { CargosControllers }
