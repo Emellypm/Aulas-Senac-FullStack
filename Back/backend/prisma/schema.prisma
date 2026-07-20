@@ -21,8 +21,10 @@ model Usuarios {
   telefone String
   status   Boolean @default(true)
 
-  cargos Cargos @relation(fields: [id_cargos], references: [id])
-  id_cargos String
+  empresas    Empresas @relation(fields: [id_empresas], references: [id])
+  id_empresas String
+  cargos      Cargos   @relation(fields: [id_cargos], references: [id])
+  id_cargos   String
 
   data_criacao     DateTime @default(now())
   data_atualizacao DateTime @updatedAt
@@ -34,10 +36,29 @@ model Cargos {
   id   String @id @default(uuid())
   nome String
 
+  empresas    Empresas @relation(fields: [id_empresas], references: [id])
+  id_empresas String
+
   usuarios Usuarios[]
 
   data_criacao     DateTime @default(now())
   data_atualizacao DateTime @updatedAt
 
   @@map("cargos")
+}
+
+model Empresas {
+  id       String  @id @default(uuid())
+  nome     String
+  cnpj     String
+  segmento String
+  escala   String
+  status   Boolean @default(true)
+
+  data_criacao     DateTime   @default(now())
+  data_atualizacao DateTime   @updatedAt
+  usuarios         Usuarios[]
+  cargos           Cargos[]
+
+  @@map("empresas")
 }
