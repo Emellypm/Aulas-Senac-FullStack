@@ -9,6 +9,7 @@ class SetorC{
         const resposta = await enviarDadosServices.cadastrarSetor({
             nome, turno, id_empresa
         })
+        return res.json(resposta)
     }
 }
 
