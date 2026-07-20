@@ -21,10 +21,10 @@ model Usuarios {
   telefone String
   status   Boolean @default(true)
 
-  empresas    Empresas @relation(fields: [id_empresas], references: [id])
-  id_empresas String
-  cargos      Cargos   @relation(fields: [id_cargos], references: [id])
-  id_cargos   String
+  empresas     Empresas       @relation(fields: [id_empresas], references: [id])
+  id_empresas  String
+  cargos       Cargos         @relation(fields: [id_cargos], references: [id])
+  id_cargos    String
   funcionarios Funcionarios[]
 
   data_criacao     DateTime @default(now())
@@ -40,7 +40,7 @@ model Cargos {
   empresas    Empresas @relation(fields: [id_empresas], references: [id])
   id_empresas String
 
-  usuarios Usuarios[]
+  usuarios     Usuarios[]
   funcionarios Funcionarios[]
 
   data_criacao     DateTime @default(now())
@@ -57,11 +57,12 @@ model Empresas {
   escala   String
   status   Boolean @default(true)
 
-  data_criacao     DateTime   @default(now())
-  data_atualizacao DateTime   @updatedAt
+  data_criacao     DateTime       @default(now())
+  data_atualizacao DateTime       @updatedAt
   usuarios         Usuarios[]
   cargos           Cargos[]
-  funcionarios Funcionarios[]
+  funcionarios     Funcionarios[]
+  escalas          Escalas[]
 
   @@map("empresas")
 }
@@ -75,16 +76,31 @@ model Funcionarios {
 
   empresa     Empresas @relation(fields: [id_empresas], references: [id])
   usuario     Usuarios @relation(fields: [id_usuarios], references: [id])
-  cargos      Cargos  @relation(fields: [id_cargos], references: [id])
+  cargos      Cargos   @relation(fields: [id_cargos], references: [id])
   id_cargos   String
   id_empresas String
   id_usuarios String
 
-  data_criacao     DateTime @default(now())
-  data_atualizacao DateTime @updatedAt
+  data_criacao     DateTime  @default(now())
+  data_atualizacao DateTime  @updatedAt
+  escalas          Escalas[]
 
   @@map("funcionarios")
 }
 
+model Escalas {
+  id          String   @id @default(uuid())
+  data        DateTime
+  turno       String
+  hora_inicio DateTime
+  hora_fim    DateTime
+  tipo        String
+  gerado_por  String
 
+  empresas        Empresas     @relation(fields: [id_empresas], references: [id])
+  funcionarios    Funcionarios @relation(fields: [id_funcionarios], references: [id])
+  id_empresas     String
+  id_funcionarios String
 
+  @@map("escalas")
+}
