@@ -4,7 +4,7 @@ import { Router } from 'express'
 import { UsuariosControllers } from './Controllers/Usuarios/UsuariosControllers'
 import { CargosControllers } from './Controllers/Cargos/CargosControllers'
 import { EmpresasControllers } from './controllers/Empresas/EmpresasControllers'
-
+import { FuncionariosControllers } from './controllers/Funcionarios/FuncionariosControllers'
 const router = Router()
 
 //Criação dos EndPoints
@@ -15,6 +15,9 @@ router.post('/CadastrarUsuarios', new UsuariosControllers().cadastrarUsuarios)
 router.post('/CadastrarCargos', new CargosControllers().cadastrarCargos)
 
 router.post('/CadastrarEmpresas', new EmpresasControllers().cadastrarEmpresas)
+
+router.post('/CadastrarFuncionarios', new FuncionariosControllers().cadastrarFuncionarios)
+
 
 
 export default router

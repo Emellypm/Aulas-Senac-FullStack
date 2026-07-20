@@ -25,6 +25,7 @@ model Usuarios {
   id_empresas String
   cargos      Cargos   @relation(fields: [id_cargos], references: [id])
   id_cargos   String
+  funcionarios Funcionarios[]
 
   data_criacao     DateTime @default(now())
   data_atualizacao DateTime @updatedAt
@@ -40,6 +41,7 @@ model Cargos {
   id_empresas String
 
   usuarios Usuarios[]
+  funcionarios Funcionarios[]
 
   data_criacao     DateTime @default(now())
   data_atualizacao DateTime @updatedAt
@@ -59,6 +61,30 @@ model Empresas {
   data_atualizacao DateTime   @updatedAt
   usuarios         Usuarios[]
   cargos           Cargos[]
+  funcionarios Funcionarios[]
 
   @@map("empresas")
 }
+
+model Funcionarios {
+  id     String  @id @default(uuid())
+  nome   String
+  cpf    String
+  turno  String
+  status Boolean @default(true)
+
+  empresa     Empresas @relation(fields: [id_empresas], references: [id])
+  usuario     Usuarios @relation(fields: [id_usuarios], references: [id])
+  cargos      Cargos  @relation(fields: [id_cargos], references: [id])
+  id_cargos   String
+  id_empresas String
+  id_usuarios String
+
+  data_criacao     DateTime @default(now())
+  data_atualizacao DateTime @updatedAt
+
+  @@map("funcionarios")
+}
+
+
+
