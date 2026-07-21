@@ -4,19 +4,19 @@ interface cadastrarEmpresas{
     nome: string,
     cnpj: string,
     segmento: string,
-    escala: string,
+    tipo_escala: string,
     
 }
 
 class EmpresasServices {
-    async cadastrarEmpresas({ nome, cnpj, segmento, escala }: cadastrarEmpresas) {
+    async cadastrarEmpresas({ nome, cnpj, segmento, tipo_escala }: cadastrarEmpresas) {
         await prismaClient.empresas.create({
             data: {
                 nome: nome,
                 cnpj: cnpj,
                 segmento: segmento,
-                escala: escala,
-                
+                tipo_escala: tipo_escala,
+        
             }
         })
 

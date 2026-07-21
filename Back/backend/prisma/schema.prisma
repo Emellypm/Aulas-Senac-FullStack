@@ -14,76 +14,86 @@ datasource db {
 }
 
 model Usuarios {
-  id       String  @id @default(uuid())
-  nome     String
-  email    String  @unique
-  senha    String
-  telefone String
-  status   Boolean @default(true)
-
-  empresas     Empresas       @relation(fields: [id_empresas], references: [id])
-  id_empresas  String
-  cargos       Cargos         @relation(fields: [id_cargos], references: [id])
-  id_cargos    String
-  funcionarios Funcionarios[]
-
-  data_criacao     DateTime @default(now())
-  data_atualizacao DateTime @updatedAt
-
-  @@map("usuarios")
-}
-
-model Cargos {
-  id   String @id @default(uuid())
-  nome String
+  id     String  @id @default(uuid())
+  nome   String
+  email  String  @unique
+  senha  String
+  role   Int
+  status Boolean @default(true)
 
   empresas    Empresas @relation(fields: [id_empresas], references: [id])
   id_empresas String
 
-  usuarios     Usuarios[]
+  funcionarios Funcionarios[]
+
+  data_criacao     DateTime @default(now())
+  data_atualizacao DateTime @updatedAt
+  ultimo_acesso    DateTime @default(now())
+
+  @@map("usuarios")
+}
+
+model Empresas {
+  id          String  @id @default(uuid())
+  nome        String
+  cnpj        String
+  segmento    String
+  tipo_escala String
+  status      Boolean @default(true)
+
+  data_criacao     DateTime @default(now())
+  data_atualizacao DateTime @updatedAt
+
+  usuarios         Usuarios[]
+  setores          Setores[]
+  funcionarios     Funcionarios[]
+  escalas          Escalas[]
+  feriados_empresa FeriadoEmpresa[]
+
+  @@map("empresas")
+}
+
+model Setores {
+  id                     String  @id @default(uuid())
+  nome                   String
+  min_funcionarios_turno Int
+  status                 Boolean @default(true)
+
+  empresas    Empresas @relation(fields: [id_empresas], references: [id])
+  id_empresas String
+
   funcionarios Funcionarios[]
 
   data_criacao     DateTime @default(now())
   data_atualizacao DateTime @updatedAt
 
-  @@map("cargos")
-}
-
-model Empresas {
-  id       String  @id @default(uuid())
-  nome     String
-  cnpj     String
-  segmento String
-  escala   String
-  status   Boolean @default(true)
-
-  data_criacao     DateTime       @default(now())
-  data_atualizacao DateTime       @updatedAt
-  usuarios         Usuarios[]
-  cargos           Cargos[]
-  funcionarios     Funcionarios[]
-  escalas          Escalas[]
-
-  @@map("empresas")
+  @@map("setores")
 }
 
 model Funcionarios {
-  id     String  @id @default(uuid())
-  nome   String
-  cpf    String
-  turno  String
-  status Boolean @default(true)
+  id                   String  @id @default(uuid())
+  nome                 String
+  cpf                  String
+  turno                String
+  cargo                String
+  carga_horaria_semana Decimal
+  status               Boolean @default(true)
 
-  empresa     Empresas @relation(fields: [id_empresas], references: [id])
-  usuario     Usuarios @relation(fields: [id_usuarios], references: [id])
-  cargos      Cargos   @relation(fields: [id_cargos], references: [id])
-  id_cargos   String
+  empresas    Empresas @relation(fields: [id_empresas], references: [id])
   id_empresas String
+
+  usuarios    Usuarios @relation(fields: [id_usuarios], references: [id])
   id_usuarios String
 
-  data_criacao     DateTime  @default(now())
-  data_atualizacao DateTime  @updatedAt
-  escalas          Escalas[]
+  setores    Setores @relation(fields: [id_setores], references: [id])
+  id_setores String
+
+  escalas      Escalas[]
+  ausencias    Ausencia[]
+  notificacoes Notificacao[]
+
+  data_criacao     DateTime @default(now())
+  data_atualizacao DateTime @updatedAt
 
   @@map("funcionarios")
 }
@@ -92,15 +102,83 @@ model Escalas {
   id          String   @id @default(uuid())
   data        DateTime
   turno       String
-  hora_inicio DateTime
-  hora_fim    DateTime
+  hora_inicio DateTime @db.Time()
+  hora_fim    DateTime @db.Time()
   tipo        String
   gerado_por  String
 
-  empresas        Empresas     @relation(fields: [id_empresas], references: [id])
+  empresas    Empresas @relation(fields: [id_empresas], references: [id])
+  id_empresas String
+
   funcionarios    Funcionarios @relation(fields: [id_funcionarios], references: [id])
-  id_empresas     String
   id_funcionarios String
 
+  notificacoes Notificacao[]
+
+  data_criacao DateTime @default(now())
+
   @@map("escalas")
+}
+
+model FeriadoNacional {
+  id         String   @id @default(uuid())
+  nome       String
+  data       DateTime
+  recorrente Boolean  @default(false)
+  tipo       String
+
+  feriados_empresa FeriadoEmpresa[]
+
+  @@map("feriado_nacional")
+}
+
+model FeriadoEmpresa {
+  id         String   @id @default(uuid())
+  nome       String
+  data       DateTime
+  recorrente Boolean  @default(false)
+  status     Boolean  @default(true)
+
+  empresas    Empresas @relation(fields: [id_empresas], references: [id])
+  id_empresas String
+
+  feriado_nacional    FeriadoNacional @relation(fields: [id_feriado_nacional], references: [id])
+  id_feriado_nacional String
+
+  @@map("feriado_empresa")
+}
+
+model Ausencia {
+  id              String   @id @default(uuid())
+  data            DateTime
+  tipo            String
+  motivo          String?
+  arquivo_url     String?
+  sugerido_por_ia Boolean  @default(false)
+  status          Boolean  @default(true)
+
+  funcionarios    Funcionarios @relation(fields: [id_funcionarios], references: [id])
+  id_funcionarios String
+
+  data_criacao DateTime @default(now())
+
+  @@map("ausencia")
+}
+
+model Notificacao {
+  id         String    @id @default(uuid())
+  canal      String
+  status     String    @default("pendente")
+  mensagem   String?
+  data_envio DateTime?
+
+  escalas    Escalas @relation(fields: [id_escalas], references: [id])
+  id_escalas String
+
+  funcionarios    Funcionarios @relation(fields: [id_funcionarios], references: [id])
+  id_funcionarios String
+
+  data_criacao DateTime @default(now())
+
+  @@map("notificacao")
 }
