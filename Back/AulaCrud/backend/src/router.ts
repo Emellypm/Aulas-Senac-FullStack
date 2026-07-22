@@ -16,5 +16,7 @@ router.get('/VisualizarDadosGeral', new UsuariosControllers().visualizarDadosGer
 //Rotas de Cargos
 router.post('/CadastrarCargos', new CargosControllers().cadastrarCargos)
 
+router.get('/VisualizarUsuarioUnicoGet/:id', new UsuariosControllers().visualizarUsuarioUnicoGet)
+
 
 export default router
