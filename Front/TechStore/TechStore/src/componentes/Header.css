@@ -1,0 +1,30 @@
+.header {
+    background: var(--evergreen);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    border-bottom: 1px solid var(--strong-cyan);
+}
+
+.header h1 {
+    color: var(--frozen-water);
+    font-size: 1.8rem;
+}
+
+.menu {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.menu a {
+    text-decoration: none;
+    color: var(--frozen-water);
+    font-weight: bold;
+    transition: .3s;
+}
+
+.menu a:hover {
+    color: var(--strong-cyan);
+}

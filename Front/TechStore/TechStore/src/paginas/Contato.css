@@ -1,0 +1,83 @@
+.contato {
+    background: var(--ink-black);
+    min-height: 500px;
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--azure-mist);
+}
+
+.contato h2 {
+    color: var(--azure-mist);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.contato p {
+    color: var(--icy-blue);
+}
+
+
+.form-contato {
+    background: var(--twilight-indigo);
+
+    max-width: 500px;
+    margin: 40px auto;
+
+    padding: 35px;
+
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+
+.form-contato input,
+.form-contato textarea {
+
+    background: var(--ink-black);
+
+    border: 1px solid var(--icy-blue);
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    color: var(--azure-mist);
+
+    font-size: 1rem;
+}
+
+
+.form-contato input::placeholder,
+.form-contato textarea::placeholder {
+    color: var(--icy-blue);
+}
+
+
+.form-contato button {
+
+    background: var(--strong-cyan);
+
+    color: var(--ink-black);
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+
+.form-contato button:hover {
+
+    background: var(--azure-mist);
+
+}
