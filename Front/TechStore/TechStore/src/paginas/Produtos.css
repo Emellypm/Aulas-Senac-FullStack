@@ -1,0 +1,16 @@
+.produtos{
+    padding:50px;
+    text-align:center;
+}
+
+.produtos h2{
+    color:#D9FCED;
+    margin-bottom:30px;
+}
+
+.lista-produtos{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}

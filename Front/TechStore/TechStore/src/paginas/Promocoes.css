@@ -1,0 +1,52 @@
+.promocoes {
+    padding: 50px;
+    text-align: center;
+    color: var(--frozen-water);
+}
+
+.promocoes h2 {
+    color: var(--strong-cyan);
+    margin-bottom: 15px;
+}
+
+.ofertas {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.oferta-card {
+    background: var(--twilight-indigo);
+    padding: 25px;
+    border-radius: 18px;
+    width: 250px;
+}
+
+.oferta-card h3 {
+    color: var(--frozen-water);
+}
+
+.antigo {
+    text-decoration: line-through;
+    opacity: .6;
+}
+
+.novo {
+    color: var(--strong-cyan);
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.oferta-card button {
+    background: var(--electric-sapphire);
+    color: var(--frozen-water);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.oferta-card button:hover {
+    background: var(--strong-cyan);
+}
