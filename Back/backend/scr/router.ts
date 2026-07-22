@@ -23,4 +23,8 @@ router.post('/CadastrarEscalas', new EscalasControllers().cadastrarEscalas)
 
 router.post('/CadastrarAusencia', new AusenciaControllers().cadastrarAusencia)
 
+router.get('/VisualizarDadosGeral', new UsuariosControllers().visualizarDadosGeral)
+
+router.post('/VisualizarUsuarioUnicoPost', new UsuariosControllers().visualizarUsuarioUnicoPost)
+
 export default router

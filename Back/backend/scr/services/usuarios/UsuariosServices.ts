@@ -32,6 +32,31 @@ class UsuariosServices {
 
         return ({ dados: 'Dados salvos com sucesso' })
     }
+    async visualizarDadosGeral(){
+        const resposta = await prismaClient.usuarios.findMany({
+            select: {
+                id: true,
+                nome: true,
+                email: true,
+                role: true
+            }
+        })
+        return resposta
+    }
+    async visualizarUsuarioUnicoPost(id: string){
+        const resposta = await prismaClient.usuarios.findFirst({
+            where: {
+                id: id
+            },
+            select:{
+                id: true,
+                nome: true,
+                email: true,
+                role: true
+            }
+        })
+        return resposta
+    }
 }
 
 export { UsuariosServices }
