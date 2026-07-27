@@ -30,6 +30,7 @@ function Hero() {
                 />
 
             </div>
+
         </section>
     )
 }
