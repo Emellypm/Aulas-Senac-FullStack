@@ -1,4 +1,4 @@
-import "./Guia.css";
+import "../componentes/Guia.css"
 
 export default function GuiaCarrosel() {
     return (

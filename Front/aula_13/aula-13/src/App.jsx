@@ -1,5 +1,5 @@
-import Carrossel from "./Componentes/Carrossel";
-import GuiaCarrossel from "./Componentes/GuiaCarrossel";
+import Carrossel from "./componentes/Carrosel";
+import GuiaCarrossel from "./componentes/GuiaCarrosel"
 
 function App() {
   return (
