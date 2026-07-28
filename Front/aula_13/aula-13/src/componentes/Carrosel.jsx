@@ -1,35 +1,41 @@
 import { useState, useEffect } from "react";
 import "./Carrosel.css";
 
-import img1 from "../assets/carrosel/img1.jpg";
-import img2 from "../assets/carrosel/img2.jpg";
-import img3 from "../assets/carrosel/img3.jpg";
-import img4 from "../assets/carrosel/img4.jpg";
+import img01 from "../assets/carrosel/img01.png";
+import img02 from "../assets/carrosel/img02.png";
+import img03 from "../assets/carrosel/img03.png";
+import img04 from "../assets/carrosel/img04.png";
+import img05 from "../assets/carrosel/img05.png";
 
 export default function Carrosel() {
     const slides = [
         {
-            imagem: img1,
-            titulo: "CPU",
-            descricao: "A imagem mostra um setup gamer branco com iluminação rosa e decoração em estilo anime.",
+            imagem: img01,
+            titulo: "Mundo Fantástico",
+            descricao: "Explore paisagens incríveis, castelos e montanhas em uma aventura inesquecível",
             botao: "Saiba mais"
         },
         {
-            imagem: img2,
-            titulo: "CPU",
-            descricao: "A imagem mostra um setup gamer preto com iluminação rosa e componentes organizados",
+            imagem: img02,
+            titulo: "Floresta Encantada",
+            descricao: "Descubra um lugar mágico repleto de natureza, mistérios e beleza"
+        },
+        {
+            imagem: img03,
+            titulo: "Cidade do Futuro",
+            descricao: "Tecnologia, inovação e sustentabilidade caminhando juntas.",
             botao: "Saiba mais"
         },
         {
-            imagem: img3,
-            titulo: "CPU",
-            descricao: "A imagem mostra um setup gamer preto com iluminação roxa e decoração delicada.",
+            imagem: img04,
+            titulo: "Novo Horizonte",
+            descricao: "Imagine um novo mundo cheio de possibilidades e descobertas.",
             botao: "Saiba mais"
         },
         {
-            imagem: img4,
-            titulo: "CPU",
-            descricao: "A imagem mostra um setup gamer preto com iluminação rosa e design moderno.",
+            imagem: img05,
+            titulo: "Natureza Viva",
+            descricao: "A beleza das florestas e a tranquilidade da natureza em um só lugar.",
             botao: "Saiba mais"
         }
     ];

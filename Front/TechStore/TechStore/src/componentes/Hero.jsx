@@ -1,4 +1,5 @@
 import "./Hero.css"
+import Carrossel from "./Carrossel"
 
 function Hero() {
     return (
@@ -24,10 +25,7 @@ function Hero() {
             </div>
 
             <div className="hero-image">
-                <img
-                    src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=900"
-                    alt="Setup Gamer"
-                />
+                <Carrossel />
 
             </div>
 
