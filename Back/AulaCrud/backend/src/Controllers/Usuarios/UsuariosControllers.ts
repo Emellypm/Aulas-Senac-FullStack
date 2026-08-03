@@ -6,13 +6,7 @@ class UsuariosControllers {
     async cadastrarUsuarios(req: Request, res: Response) {
         const { nome, email, senha, telefone, id_cargos } = req.body
         const enviarDadosServices = new UsuariosServices()
-        const resposta = await enviarDadosServices.cadastrarUsuarios({
-            nome,
-            email,
-            senha,
-            telefone,
-            id_cargos
-        })
+        const resposta = await enviarDadosServices.cadastrarUsuarios({nome,email,senha,telefone,id_cargos})
         return res.json(resposta)
     }
 
@@ -32,6 +26,12 @@ class UsuariosControllers {
         const { id } = req.body
         const enviarDados = new UsuariosServices()
         const resposta = await enviarDados.visualizarUsuarioUnicoGet(id)
+        return res.json(resposta)
+    }
+    async alterarUsuarios(req: Request, res: Response) {
+        const {id, nome, email, telefone, id_cargos} = req.body
+        const enviarDados = new UsuariosServices()
+        const resposta = await enviarDados.alterarUsuarios({id,nome,email,telefone,id_cargos})
         return res.json(resposta)
     }
 

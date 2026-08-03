@@ -8,6 +8,14 @@ interface CadUsuarios {
     id_cargos: string
 }
 
+interface AltUsuarios {
+    id: string,
+    nome: string,
+    email: string,
+    telefone: string,
+    id_cargos: string
+}
+
 class UsuariosServices {
     async cadastrarUsuarios({ nome, email, senha, telefone, id_cargos }: CadUsuarios) {
 
@@ -76,6 +84,20 @@ class UsuariosServices {
             }
         })
         return resposta
+    }
+    async alterarUsuarios({ id, nome, email, telefone, id_cargos }: AltUsuarios) {
+        await prismaClient.usuarios.update({
+            where: {
+                id: id
+            },
+            data: {
+                nome: nome,
+                email: email,
+                telefone:telefone,
+                id_cargos: id_cargos
+            }
+        })
+        return ({dados:'Dados Alterados com Sucesso'})
     }
 
 }
