@@ -57,6 +57,14 @@ class UsuariosServices {
         })
         return resposta
     }
+    async apagarUsuarios(id: string) {
+        const resposta = await prismaClient.usuarios.delete({
+            where: {
+                id: id
+            }
+        })
+        return ({ dados: 'Dados apagados com Sucesso' })
+    }
 }
 
 export { UsuariosServices }

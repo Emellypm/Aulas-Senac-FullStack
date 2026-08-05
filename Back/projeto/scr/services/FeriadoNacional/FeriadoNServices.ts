@@ -2,14 +2,14 @@ import prismaClient from "../../prisma/PrismaClient"
 
 interface cadFeriado{
     nome: string,
-    data: number,
+    data: string,
     recorrente: boolean,
     tipo: string
 }
 
 class FeriadoNServices {
     async cadastrarFeriado ({ nome, data, recorrente,tipo }: cadFeriado) {
-        await prismaClient.feriado_nacional.create({
+        await prismaClient.feriadoNacional.create({
             data: {
                 nome: nome,
                 data: data,

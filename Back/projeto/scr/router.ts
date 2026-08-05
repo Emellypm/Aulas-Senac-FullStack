@@ -8,6 +8,7 @@ import { SetoresControllers } from './controllers/Setores/SetoresControllers'
 import { EscalasControllers } from './controllers/escalas/EscalaControllers'
 import { AusenciaControllers } from './controllers/Ausencia/AusenciaControllers'
 import { FeriadoNacionalControllers } from './controllers/FeriadoNacional/FeriadoNacionalControllers'
+import { FeriadoEmpresaControllers } from './controllers/FeriadoEmpresa/FeriadoEmpresaControllers'
 const router = Router()
 
 //Criação dos EndPoints
@@ -29,5 +30,12 @@ router.get('/VisualizarDadosGeral', new UsuariosControllers().visualizarDadosGer
 router.post('/VisualizarUsuarioUnicoPost', new UsuariosControllers().visualizarUsuarioUnicoPost)
 
 router.post('/CadastrarFeriado', new FeriadoNacionalControllers().cadastrarFeriado)
+
+router.post('/CadastrarFeriado', new FeriadoEmpresaControllers().cadastrarFeriado)
+
+
+
+
+router.delete('/ApagarUsuarios', new UsuariosControllers().apagarUsuarios)
 
 export default router
