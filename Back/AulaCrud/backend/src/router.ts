@@ -3,6 +3,7 @@ import { Router } from 'express'
 //Importação do Controladores
 import { UsuariosControllers } from './Controllers/Usuarios/UsuariosControllers'
 import { CargosControllers } from './Controllers/Cargos/CargosControllers'
+import { UsuariosServices } from './Services/Usuarios/UsuariosServices'
 
 const router = Router()
 
@@ -14,6 +15,7 @@ router.post('/VisualizarUsuarioUnicoPost', new UsuariosControllers().visualizarU
 router.get('/VisualizarDadosGeral', new UsuariosControllers().visualizarDadosGeral)
 router.get('/VisualizarUsuarioUnicoGet/:id', new UsuariosControllers().visualizarUsuarioUnicoGet)
 router.put('/AlterarUsuarios', new UsuariosControllers().alterarUsuarios)
+router.delete('/ApagarUsuarios', new UsuariosControllers().apagarUsuarios)
 
 router.post('/CadastrarCargos', new CargosControllers().cadastrarCargos)
 export default router
