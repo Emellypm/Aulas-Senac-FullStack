@@ -1,14 +1,11 @@
-import Header from "./components/Header";
-import FormAluno from "./components/FormAluno";
-import Footer from "./components/Footer";
-
-function App() {
+function Footer() {
     return (
-        <div className="app">
-            <Header />
-            <FormAluno />
-            <Footer />
-        </div>
+        <footer className="footer">
+            <p>
+                Desenvolvido com React, Node.js,
+                Express e MySQL
+            </p>
+        </footer>
     );
 }
-export default App;
+export default Footer

@@ -1,38 +1,24 @@
-import "./App.css";
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./componentes/Header";
-import Footer from "./componentes/Footer";
-
 import Home from "./paginas/Home";
-import Produtos from "./paginas/Produtos";
-import Promocoes from "./paginas/Promocoes";
-import Contato from "./paginas/Contato";
-
+import Carrinho from "./paginas/Carrinho";
 
 function App() {
-  return (
-    <BrowserRouter>
+    return (
+        <BrowserRouter>
 
-      <Header />
+            <Header />
 
-      <Routes>
+            <Routes>
 
-        <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home />} />
+                <Route path="/carrinho" element={<Carrinho />} />
 
-        <Route path="/produtos" element={<Produtos />} />
+            </Routes>
 
-        <Route path="/promocoes" element={<Promocoes />} />
-
-        <Route path="/contato" element={<Contato />} />
-
-      </Routes>
-
-      <Footer />
-
-    </BrowserRouter>
-  );
+        </BrowserRouter>
+    );
 }
 
 export default App;
