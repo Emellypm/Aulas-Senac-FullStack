@@ -2,11 +2,19 @@ import express, { Request, Response, NextFunction } from 'express'
 import 'express-async-errors'
 import cors from 'cors'
 import router from './router'
+import  Path  from 'path'
+import path from 'path'
 
 const app = express()
 app.use(express.json())
 app.use(cors())
 app.use(router)
+
+// Mostra os arquivos da pasta "tmp" através do endereço /files
+app.use(
+    '/files',
+    express.static(path.resolve(__dirname, '..', 'tmp'))
+)
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
     if(err instanceof Error){

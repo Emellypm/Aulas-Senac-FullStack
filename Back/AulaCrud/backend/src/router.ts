@@ -4,10 +4,12 @@ import { Router } from 'express'
 import { UsuariosControllers } from './Controllers/Usuarios/UsuariosControllers'
 import { CargosControllers } from './Controllers/Cargos/CargosControllers'
 import { UsuariosServices } from './Services/Usuarios/UsuariosServices'
+import ProdutosControllers from './Controllers/Produtos/ProdutosControllers'
 
 const router = Router()
 
 //Criação dos EndPoints
+
 //Rotas de Usuarios
 router.post('/CadastrarUsuarios', new UsuariosControllers().cadastrarUsuarios)
 
@@ -17,5 +19,10 @@ router.get('/VisualizarUsuarioUnicoGet/:id', new UsuariosControllers().visualiza
 router.put('/AlterarUsuarios', new UsuariosControllers().alterarUsuarios)
 router.delete('/ApagarUsuarios', new UsuariosControllers().apagarUsuarios)
 
+//Rotas de Cargos
 router.post('/CadastrarCargos', new CargosControllers().cadastrarCargos)
+
+
+//Rotas de Produtos
+router.post('/CadastrarProdutos', new ProdutosControllers().cadastrarProdutos )
 export default router
