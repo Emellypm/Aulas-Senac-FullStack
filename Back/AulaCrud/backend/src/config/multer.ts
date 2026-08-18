@@ -1,8 +1,6 @@
 import crypto from 'crypto'
-import { request } from 'http'
 import multer from 'multer'
 import { extname, resolve } from 'path'
-import { callbackify } from 'util'
 
 export default {
     upload(folder: string) {
@@ -10,11 +8,10 @@ export default {
             storage: multer.diskStorage({
                 destination: resolve(__dirname, '..', '..', folder),
                 filename: (request, file, callback) => {
-                    const fileHash = crypto.randomBytes(16).toString('hex')
-                    //a - f | 0 - 9
-                    const filename = `${fileHash}-${file.originalname}`
+                    const filehash = crypto.randomBytes(16).toString('hex')
+                    const fileName = `${filehash}-${file.originalname}`
 
-                    return callback(null, filename)
+                    return callback(null, fileName)
                 }
             })
         }

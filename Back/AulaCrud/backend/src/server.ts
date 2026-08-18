@@ -2,7 +2,6 @@ import express, { Request, Response, NextFunction } from 'express'
 import 'express-async-errors'
 import cors from 'cors'
 import router from './router'
-import  Path  from 'path'
 import path from 'path'
 
 const app = express()

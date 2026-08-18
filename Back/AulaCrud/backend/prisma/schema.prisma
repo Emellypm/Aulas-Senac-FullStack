@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -21,7 +15,7 @@ model Usuarios {
   telefone String
   status   Boolean @default(true)
 
-  cargos Cargos @relation(fields: [id_cargos], references: [id])
+  cargos    Cargos @relation(fields: [id_cargos], references: [id])
   id_cargos String
 
   data_criacao     DateTime @default(now())
@@ -40,4 +34,17 @@ model Cargos {
   data_atualizacao DateTime @updatedAt
 
   @@map("cargos")
+}
+
+model Produtos {
+  id         String @id @default(uuid())
+  nome       String
+  preco      String
+  quantidade String
+  banner     String
+
+  data_criacao     DateTime @default(now())
+  data_atualizacao DateTime @updatedAt
+
+  @@map("produtos")
 }

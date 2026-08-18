@@ -1,12 +1,14 @@
 import { Router } from 'express'
+import multer from 'multer'
+import uploadConfig from './config/multer'
 
 //Importação do Controladores
 import { UsuariosControllers } from './Controllers/Usuarios/UsuariosControllers'
 import { CargosControllers } from './Controllers/Cargos/CargosControllers'
-import { UsuariosServices } from './Services/Usuarios/UsuariosServices'
 import ProdutosControllers from './Controllers/Produtos/ProdutosControllers'
 
 const router = Router()
+const upload = multer(uploadConfig.upload('./tmp')) 
 
 //Criação dos EndPoints
 
@@ -24,5 +26,6 @@ router.post('/CadastrarCargos', new CargosControllers().cadastrarCargos)
 
 
 //Rotas de Produtos
-router.post('/CadastrarProdutos', new ProdutosControllers().cadastrarProdutos )
+router.post('/CadastrarProdutos', upload.single('file'), new ProdutosControllers().cadastrarProdutos)
+
 export default router
